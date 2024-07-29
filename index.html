@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Image Gallary</h1></header>
+    <div class="full-img" id="fullImgBox">
+        <img src="images/pic1.jpg" id="fullImg">
+        <span class="close-button" onclick="closeFullImg()"> X</span>
+        <span class="next-arrow" onclick="nextImg()">&#9654;</span>
+    </div>
+    <div class="img-gallery">
+        <img src="images/pic1.jpg" onclick="openFullImg(this.src)">
+        <img src="images/pic2.jpg" onclick="openFullImg(this.src)">
+        <img src="images/pic3.jpg" onclick="openFullImg(this.src)">
+        <img src="images/pic4.jpg" onclick="openFullImg(this.src)">
+        <img src="images/pic5.jpg" onclick="openFullImg(this.src)">
+        <img src="images/pic6.jpg" onclick="openFullImg(this.src)">
+        <img src="images/pic7.jpg" onclick="openFullImg(this.src)">
+        <img src="images/pic8.jpg" onclick="openFullImg(this.src)">
+        <img src="images/pic9.jpg" onclick="openFullImg(this.src)">
+        <img src="images/pic10.jpg" onclick="openFullImg(this.src)">
+        <!-- Add more images as needed -->
+    </div>
+    <footer>
+        <p>&copy; 2024 Image Gallery. All rights reserved AbhayMohite-CodeAlpha.</p>
+    </footer>
+    <script>
+        var fullImgBox = document.getElementById("fullImgBox");
+        var fullImg = document.getElementById("fullImg");
+        var imgList = document.querySelectorAll(".img-gallery img");
+        var currentIndex;
+
+        function openFullImg(pic){
+            fullImgBox.style.display = "flex";
+            fullImg.src = pic;
+            currentIndex = Array.from(imgList).findIndex(img => img.src === pic);
+        }
+
+        function closeFullImg(){
+            fullImgBox.style.display = "none";
+        }
+
+        function nextImg(){
+            currentIndex = (currentIndex + 1) % imgList.length;
+            fullImg.src = imgList[currentIndex].src;
+        }
+    </script>
+</body>
+</html>
